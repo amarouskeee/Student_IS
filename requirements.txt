@@ -1,4 +1,14 @@
+click==8.0.4
 Flask==2.0.2
-Flask-WTF==1.0.0
+Flask-Login==0.5.0
 Flask-SQLAlchemy==2.5.1
-Flask-login==0.5.0
+Flask-WTF==1.0.0
+greenlet==1.1.2
+itsdangerous==2.1.2
+Jinja2==3.1.1
+MarkupSafe==2.1.1
+password==0.2
+remember==0.1
+SQLAlchemy==1.4.32
+Werkzeug==2.0.3
+WTForms==3.0.1
