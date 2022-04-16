@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField, DateField, SubmitField, SelectField, BooleanField, PasswordField
+from wtforms import StringField, FloatField, DateField, SubmitField, SelectField, BooleanField, PasswordField, DateField, TimeField
 from wtforms.validators import DataRequired, ValidationError, EqualTo
 from models import User
 
@@ -49,8 +49,17 @@ class RegisterForm(FlaskForm):
         if user is not None:
             raise ValidationError('Please use a different email!')
 
+
 class TeacherForm(FlaskForm):
     name = StringField('Student\'s name: ',
                        validators=[DataRequired()])
     subject = SelectField('Subject', choices=[])
-    submit= SubmitField('Add')
+    submit = SubmitField('Add')
+
+
+class LessonForm(FlaskForm):
+    date = DateField('Lesson date: ', validators=[DataRequired()])
+    time = TimeField('lesson time: ', validators=[DataRequired()])
+    teacher = SelectField('Teacher: ', choices=[])
+    subject= SelectField('Subject: ', choices=[])
+    submit = SubmitField('Add')

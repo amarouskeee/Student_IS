@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-center">Add Lesson</h1>
+    <form action="" method="post">
+    {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.date.label(class="from-label") }}
+            {{ form.date(class="form-select") }}
+        </div>
+        <div class="mb-3">
+            {{ form.time.label(class="from-label") }}
+            {{ form.time(class="from-select") }}
+        </div>
+        <div class="mb-3">
+            {{ form.subject.label(class="from-label") }}
+            {{ form.subject(class="form-select") }}
+        </div>
+        <div class="mb-3">
+            {{ form.teacher.label(class="from-label") }}
+            {{ form.teacher(class="form-select") }}
+        </div>
+        <div class="mb-3">
+            {{ form.submit(class="btn btn-outline-primary") }}
+        </div>
+    </form>
+
+{% endblock %}

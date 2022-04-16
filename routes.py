@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for
 from app import app, db, login
-from forms import StudentForm, SubjectForm, LoginForm, RegisterForm, TeacherForm
-from models import Subjects, Students, User, Teachers
+from forms import StudentForm, SubjectForm, LoginForm, RegisterForm, TeacherForm, LessonForm
+from models import Subjects, Students, User, Teachers, Lessons
 from flask_login import current_user, login_user, logout_user, login_required
 
 
@@ -157,3 +157,15 @@ def add_teacher():
         db.session.commit()
     return render_template('add_teacher.html', form=form,items=teacher_list)
 
+@app.route('/add-lesson', methods=['GET','POST'])
+@login_required
+def add_lesson():
+    form = LessonForm()
+    subjects = Subjects.query.order_by(Subjects.name).all()
+    teachers = Teachers.query.order_by(Teachers.name).all()
+
+    form.subject.choices = [(subject.id, subject.name) for subject in subjects]
+    form.teacher.choices = [(teacher.id, teacher.name) for teacher in teachers]
+
+
+    return render_template('add_lesson.html', form=form)
